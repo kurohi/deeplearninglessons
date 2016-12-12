@@ -198,6 +198,43 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 -Generates Shakespeare phrases after being trained by its works
 
 
+##Activation functions for general architectures
+-The choise of what activation function depends on the kind of data (sparve vs dense)
+-These functions are applied on the hidden or output layers. Normally the input layer is raw
+-A more continuous distribution of input data is best modeled by ReLU activation fuction
 
+###Output layer decisions
+-Depending on the target of the output, the choice of activation function changes
+-It can be: Regression, binary classification, multi-class classification
+
+####Regression
+-Objective: Get real numbers
+-Use linear activation function.
+
+####Binary Classification
+-Objective: Get a 0.0~1.0 representing probability
+-Use Sigmoid activation functions
+
+####Multi-class Classification
+-Objective1: Get the class with the biggest score
+-Use Softmax  with argmax()
+-Objective2: Get the scores for all classes to get a multi class system (person+car+dog for example)
+-Use Sigmoid givin 0.0~1.0 probability for each class
+
+##Loss Function
+-Quantify the agreement between the predicted output and the expected output
+-Squared Loss, Logistic Loss, Hinge Loss, Negative Log Likelihood 
+-Also falling in the categories classifation, regression and reconstruction.
+
+###Recontruction Cross Entropy
+-First apply a gaussian noise then punishes results not similar to the input without the noise
+-This ensures that it will try to learn  new features
+-Used on Restricted Boltzmann Machines
+
+##Optimazation
+-First order: Calculates a Jacobian matrix
+--Matrix with the partial derivates of loss funcion values with respect to each parameter
+-Second order: Calculates the derivate of the Jacobian matrix by approaching Hessian
+-Second order, because they also take into account the relation between parameters, take better steps, but take longer to calculate
 
 
