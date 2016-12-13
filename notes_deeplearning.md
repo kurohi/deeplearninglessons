@@ -237,4 +237,90 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 -Second order: Calculates the derivate of the Jacobian matrix by approaching Hessian
 -Second order, because they also take into account the relation between parameters, take better steps, but take longer to calculate
 
+###First order methods
+-The stochastic gradient descent is several orders of magnitude faster than batch gradient descent
+--Its faster because uses noise as well when calculating the gradient, making the convergion faster
+
+###Second order methods
+-Describe the curvature at each point of the jacobian
+-Converge in fewer steps, but takes longer to calculate a step
+
+####L-BFGS (Limited memory BFGS)
+-Does not compute the whole Hessian matrix to save space in memory
+-Works faster because uses aproximated second order information
+-L-BFGS and conjugate gradient descent are faster than Stochastic Gradient Descent.
+
+####Conjugate Gradient
+-Focuses on minimizing the conjugate L2 norm
+-Like normal gradient descent, but requires that each step after the first to be conjugate of its previous
+
+####Hessian-Free
+-Like the newton method but minimizes the quadratic function of that method faster.
+-Its a powerful method adapted to NN in 2010
+-Uses Conjugate Gradient to find the minimum of the quadratic
+
+##Hyperparameters
+-Any parameter that influenciates the performance 
+-Keep in mind that some parameters are incompatible with each other
+
+###Layer size
+-Number of neurons on a given layer... duh
+-Input and output layers are defined by the problem. With output being 1(for regression) or the number of classes
+-The number of neurons on hidden layers is directly related to how complex the problem is
+--Carefull thou as a network too big might take forever to train or ends up overfitting
+
+###Magnitude
+####Learning rate
+-A big one helps converge faster, but overshoot the minimum
+-Too slow and it will take forever to train
+-The best solution is a dynamic learning rate
+####Momentum
+-SGD dont use it as default and because of that has a chance of erratic steps, like a 0 gradient or one too big
+-Some commom techniques to regulate it: momentum, RMStop, Adam, AdaDelta
+-Momentum is a factor between 0.0 ~ 1.0
+####AdaGrad
+-Adaptevely (got it?) uses subgradient methods to adjust the learning rate
+-It speeds up at the beginning and slows it down when close to the minima decreasing error.
+-AdaGrad is the square root of the sum of squares of a window of the most recent gradient computations.
+####AdaDelta
+-Like AdaGrad but keeping only the most recent history instead of all the gradients
+####Adam
+-Gets a learning rate by estimating the first and second moments of the gradient 
+
+###Regularization
+-Measures taken against overfitting
+-"Cause it to overfit, then regularizate the hell out of it" - Geoffery Hinton
+-Dropout, DropConnect: Mutes parts of the input so that the network has to learn new positions
+####Dropout
+-Ommit(deactivate) a hidden unit(neuron) at random during training.
+-Speeds up training
+-Whem ommited, the neuron is not used in the forward nor backpropagation
+####Dropconnect
+-Same as dropout, but instead of dropping a whole neuron, drops a connection between them
+####L1
+-Prevent parameters from getting too big compared to all the others
+-Has automatic feature selection
+-Considered inefficient on dense space since provide sparce outputs
+-Uses multiplication by absolute value rather than squared ones. This makes some weights fall to 0 and some getting big
+-But make it easier to interpret the weights
+####L2
+-More computationally efficient than L1. Also has non-sparce output
+-Does NOT have automatic feature selection
+-Decreses the squared weights
+-Multiply half the sum of the squared weights by a weight-cost parameter
+-Helps ignore weights it cannot use and smooths the output
+
+###Mini-Batching
+-Sends batches of data to be trained instead of 1 entry only
+-Used to improve training speed by making better use of hardware.(GPU)
+
+#Building Blocks of a Deep Network
+
+
+
+
+
+
+
+
 
