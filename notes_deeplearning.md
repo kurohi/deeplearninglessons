@@ -315,6 +315,42 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 -Used to improve training speed by making better use of hardware.(GPU)
 
 #Building Blocks of a Deep Network
+##Unsupervised Layer-wise pretraining
+-Useful when we have a relativelly big amount of unlabeled data 
+-Uses Restricted Boltsman Machine to pretrain the first layers using the input, and then the other layers using the output of the previous one
+-Even thou it creates an overhead, it helps initialize the main NN with beter weights.
+
+###Restricted Boltzmann Machine
+-Probabilistic Feed-forwartd NN model that uses 2 bias instead of 1
+-Good for finding features and dimensionality reduction
+-The neurons never connect to other neurons of the same layer
+-Trained to be able to reconstruct the input data set
+
+####Network Layout
+-Composed of 5 parts: Visible/Hidden Units, Weights, Visible/Hidden Bias Unit
+-Every visible unit is connected to every hidden unit and vice-versa, but they are not connected between themseves
+-The hidden layer is responsable for the feature detection
+-The visible layer can receive training vectors
+-Each layer has a bias unit set to always ON
+-Trained just like a normal network using activation functions
+-Uses Contrastive Divergence to train. Minimizes the KL Divergence by samplying k steps from a markov chain
+
+####Training
+-By randomly picking the parameters for the reconstruction and measuring the KL distance, it behaves like a loss function that can be minimized
+
+####Other uses of RBMs
+-Dimensionality reduction
+-Classification
+-Regression
+-Collaborative Filtering
+-Topic modeling
+
+
+
+###Auto-encoders
+-Another Feed-forward NN that uses another bias to calculate the error of constructing the original input
+-Its unsupervises since uses only the inputs for training, no need for label.
+
 
 
 
