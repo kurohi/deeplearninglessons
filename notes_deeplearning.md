@@ -350,9 +350,48 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 ###Auto-encoders
 -Another Feed-forward NN that uses another bias to calculate the error of constructing the original input
 -Its unsupervises since uses only the inputs for training, no need for label.
+-Share similiarities with MLP in the sense that it also has input-hidden-output layers. But the output layer is the same size as the input
+-Helps detect anomalies. Specially on systems where is difficult to define what is anomalous
+
+####Common variants of auto-encoders
+#####Compression auto-encoders
+-They funnel down at the middle creating a bottleneck then increase again until the output.
+-The diagram end up looking like an hourglass
+#####Denoising auto-encoders
+-Recieve a corrupted version of the input and has to learn how to create the uncorrupted version.
 
 
+#Major architectures of Deep networks
+##Unsupervised pre-trained Neural Network
+-Comprehend networks like auto-encoders and Deep belief networks
 
+###Deep Belief Networks
+-It is made of layers of RBMs for pretraining followed bya normal feed-forward for fine tunning
+
+####Feature extraction with RBM
+-Use layers of RBMs to learn progressivily higher features of the data by putting the output of a RBM as the input of the next
+
+####Initializing the feed-forward Neural Network
+-The layers of features calculated by the RBMs initialize the weights of the feed-forward neural network
+-Helps in guiding the network into a easier conversionable error-space zone
+
+####Fine tuning phase of the feed-forward Neural Network
+-Uses a smaller learning rate to produce a gentle backpropagation
+
+##Convolutional Neural Networks
+-Uses convolutions to learn higher order features from the input data
+-Specially good in object recognition on images
+-Capable of producing rotation/translation invariant features from raw data
+-Also used on natural language generation and sentiment analysis
+-Works best when the input data has repeating patterns that appear spacially close to each other. Like patches of pixels on the same objects
+-CNN is good because normal feed-forward neural networks would need too much memory to train an image. A 32x32 rgb image would have 3072 weights only for one neuron of the hidden layer
+-The convolutional layers can be arrange in 3d volumes (width height and depth). Think of them as analogous to an image width, height and depth(3 for rgb)
+
+###CNN Architecture Overview
+-Normally devided into: Input, Feature Extraction and Classification layers
+-The input receives an 3d volume representing the image
+-The feature extraction layers normally have a sequence of Convolutional -> RELu(activation function) -> Pooling , layers
+-The classification layer is a fully connected network with 1 or more hidden layers that get the result of the Feature extration layer as input
 
 
 
