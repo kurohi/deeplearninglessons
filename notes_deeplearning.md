@@ -392,6 +392,41 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 -The input receives an 3d volume representing the image
 -The feature extraction layers normally have a sequence of Convolutional -> RELu(activation function) -> Pooling , layers
 -The classification layer is a fully connected network with 1 or more hidden layers that get the result of the Feature extration layer as input
+-Each layer transforms the 3D input into another 3D volume of activation functions
+
+####Input layer
+-3D volume with the width,height and depth of the image to be loaded into the network
+
+####Convolutional Layers
+-Uses a patch of locally connected neurons form the previous layer
+-Performs a dot product between the region of neurons in the input with the weights to the output
+-The resulting output layer normally has the same or smaller spartial dimensions but greather deaph
+-The set of weights in the convolutional layer is interpreted as a filter for convolution(kernel)
+-The activation map is stacked on the depth of the output layer
+
+#####Filters
+-Are necessary smaller than the input data in width and height
+-Are applayed to every depth of the input layer
+-The result of applying a filter to the input is known as activation map (or feature map)
+-The filter count hyperparameter controls the amount of filters and the depth of the activation map
+-As the filter go deeper into the convolutional layers, they become able to represent a non linear combination of features
+-The hyperparameter that controls the size of the filter is known as "receptive field"
+-The connection between the input depth layers is known as full-depth and spatially-local because it is always maxed for the depth
+
+#####Activation Maps
+-An activation function regulates how much of the input can pass to the next layers
+-The result of the convolution of the filter with the spatial dimension of the input is the activation map (like the edge image after a sobel filter)
+-To visualize, they are normally rendered as images (in case of image as input data)
+-The convolutional volume is made by stacking the activation maps depth-wise
+
+#####Parameter sharing
+-Used to control the amount of parameters required for training.
+-To implement, denote a single depth-slice then constrain the neurons of each depth-slice to use the same weights and bias
+-By doing this all "pixels" in the convolutional layer have the same weight vector, because width-height-wise they are the same
+
+
+
+
 
 
 
