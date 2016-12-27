@@ -424,7 +424,14 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 -To implement, denote a single depth-slice then constrain the neurons of each depth-slice to use the same weights and bias
 -By doing this all "pixels" in the convolutional layer have the same weight vector, because width-height-wise they are the same
 
+#####Convolutional layer hyperparameters
+-Kernel size (filter size)
+-Output depth
+-Stride
+-Zero-padding: Used in case of wanting to keep the input size on the output
 
+####Pooling Layers
+-Commonly inserted between convolutional layers to reduce the spatial size of the layers
 
 
 
