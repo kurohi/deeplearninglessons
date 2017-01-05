@@ -432,6 +432,38 @@ F1: good measure of accuracy when dealing with binary classification. also used 
 
 ####Pooling Layers
 -Commonly inserted between convolutional layers to reduce the spatial size of the layers
+-The most common is a max() opperation. Followed by a average
+-Use a convoluion mask with a max operation
+-Commonly the mask used is a 2x2 with a 2 stride. Reducing the width and height by 2
+
+####Fully connected layers
+-Used to calculate the score, or do the actual classification
+-Basically a MPL
+
+####Some convolutional networks to take a look
+-LeNet
+-AlexNet
+-ZFNet
+-GoogleLeNet
+-VGGNet
+
+##Recurrent Neural Networks
+-Closer to the way the brain operates as it impersonates a life long sensory data into small timeslots of useful motions output
+-Their main difference is that they model the time dimension
+-The input vector has a time delay between values to model the time dimension
+-Is analogous as programs (just like the normal NNs are to functions)
+-Instead of a fixed slidindwindow with past-present-future, RNNs incorporate longers movementes of the intput
+-Has a feedback loop to learn from sequence of data
+-For training, it uses a specializarion of backpropagation called backpropagation through time(BPTT)
+
+###Examples of sequences
+Some examples of sequential data that can be modeled using a RNN
+-Image capturing
+-Playing video games
+-Stock market
+-Speech and music generation
+-Robotic control (here it need a sequence on the input and output)
+-Can also recieve non-fixed computation steps and non-fixed output sizes
 
 
 
