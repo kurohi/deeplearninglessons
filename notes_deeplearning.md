@@ -465,6 +465,37 @@ Some examples of sequential data that can be modeled using a RNN
 -Robotic control (here it need a sequence on the input and output)
 -Can also recieve non-fixed computation steps and non-fixed output sizes
 
+###Input and output
+-Different from normal NNs the RNN can have multiple vectors of various sizes as input or output. One for each timestep.
+
+####Examples
+-one-to-many: image captioning, gives a string of labels per image
+-many-to-one: sentiment analysis using sentences as input
+-many-to-many: labeling each frame of a video
+
+####3D volumetric input
+-Similar to the CNN, RNNs recieve more dimensions as input
+-These dimensions are:
+  .Mini-batch size: number of minibatches
+  .Number of columns in the vectors per timestep: analogous to the feature vector on normal NNs
+  .Number of timesteps: Feature vectors per timeseries to model the change on them
+
+####Unseeen timeseries and masking
+-Since we are dealing with the time dimension, some features might not appear always.
+-To tell the library where the data is located for training, a mask can be set with 1.0 for the timeseries that contain data and 0.0 for the ones that dont
+
+####Network Architecture
+-RNNs are a superset of the feedforward NN. They have extra conections that spam adjacent timesteps
+-This can maybe form cycles that can go all the way back to the orinal neurons
+-These connections are commonly called recurrent edges
+-During each timestep, the output of the recurrent edges is added as input to a part of the network
+-This gives information of the previous step to the present one
+-These recurrent neurons can be layered as well
+
+###Long Short-Term Momory (LSTM) Networks
+
+
+
 
 
 
