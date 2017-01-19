@@ -516,6 +516,28 @@ Some examples of sequential data that can be modeled using a RNN
 -To make it more computationaly acceptable, a truncaded version exists where the forward-backward passes are restricted by a hyperparameter
 -Even thou the complexity is the same for the BPTT truncated and not, the truncaded version gives more parameters update for the same complexity
 
+##Recursive Neural Networks
+-Similar to recurrent NNs but with the ability to model hierarchical relations
+
+###Network Architecture
+-Has a shared weight matrix
+-Also has a binary tree structure that allows leaning a varying sequence of parts
+-Uses a specialization of the backpropagation called backpropagation through structure
+-On the tree the objective is on the top
+  .because of that the feedforward goes bottom-up and backpropagation top-down
+
+###Recursive Neural net variants
+-Recursive autoencoder: Like normal autoencoders but can reconstruct contexts
+-Recursive neural tensor: Like a normal network but uses tensors (matrixes of 3 or more dimensions) to train
+
+###Applications
+-Share a lot of applications with its cousin, the recurrent neural net
+-Better at natural language processing becue of the tree aspect of language
+-Image scene decomposition (recurcive neural tensor)
+-Audio to text transcription (recursive autoencoders)
+-Sentiment analysis
+
+
 
 
 
