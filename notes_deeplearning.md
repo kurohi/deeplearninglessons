@@ -493,6 +493,29 @@ Some examples of sequential data that can be modeled using a RNN
 -These recurrent neurons can be layered as well
 
 ###Long Short-Term Momory (LSTM) Networks
+-These networks mimic the memory system present on the brain
+-its critical components are the memory cell and the gates (including a forget gate)
+-if the input and forget gates are closed, the memory cell keeps its value for this timestep
+-LSTTMs are known for having better update equations and backpropagation
+
+####LSTM Units
+-These upgraded neurons differenciate from normal ones on the fact that they also recieve the previous timestep and the previous layers as input
+-Inside there are 3 gates (input, output and forget)
+-These gates control what enters, what exits, and what to keep on the neuron
+-The self recurrent connection, responsable for remembering, has a static weight of 1
+-Thanks to this unit, the LSTM can identify events that happens on a span of 1000 timesteps. Normal RNNs can only do it for 10 timesteps
+
+####Training
+-Supervised learning
+-The input vectors become a series of activations on the non-input neurons
+
+#####Backpropagation through time
+-Since normal backpropagation would be too expensive for RNNs the through time variant is used
+-The thorugh time variant gets the error propagation from future timesteps as well as the current one
+-Its so much heavy that computing the gradient for a sequence of 1000 has the same cost as computing a forward-backward pass on a MLP of 1000 layers
+-To make it more computationaly acceptable, a truncaded version exists where the forward-backward passes are restricted by a hyperparameter
+-Even thou the complexity is the same for the BPTT truncated and not, the truncaded version gives more parameters update for the same complexity
+
 
 
 
