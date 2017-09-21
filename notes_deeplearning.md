@@ -542,7 +542,8 @@ Some examples of sequential data that can be modeled using a RNN
 
 
 
-
+##PS
+A cool hint on how to learn nice features without having labeled data: train an auto encoder (the output is the image itself). then strip the output layer and use the hidden layers as good feature detectors.
 
 
 
